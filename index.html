@@ -1,23 +1,39 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Translator</title>
-    <link rel="stylesheet" href="styles/styles.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Translator</h1>
-        <div class="input-container">
-            <textarea id="input-text" placeholder="Enter text to translate..."></textarea>
-            <button onclick="translate()">Translate</button>
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Translator</h1>
+        <div class="form-group">
+            <label for="sourceText">Enter text to translate:</label>
+            <textarea class="form-control" id="sourceText" rows="5"></textarea>
         </div>
-        <div class="output-container">
-            <h2>Translated Text</h2>
-            <p id="translated-text"></p>
+        <div class="form-group">
+            <label for="targetLanguage">Select target language:</label>
+            <select class="form-control" id="targetLanguage">
+                <option value="en">English</option>
+                <option value="es">Spanish</option>
+                <option value="fr">French</option>
+                <!-- Add more languages as needed -->
+            </select>
         </div>
+        <button class="btn btn-primary" onclick="translateText()">Translate</button>
+        <div id="translatedText" class="mt-4"></div>
     </div>
 
+    <!-- Bootstrap JS and jQuery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <!-- Custom JS -->
     <script src="script.js"></script>
 </body>
 </html>
