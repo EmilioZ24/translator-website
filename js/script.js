@@ -1,27 +1,46 @@
+const translations = {
+    en: {
+        greeting: "Hello",
+        farewell: "Goodbye"
+        // Add more translations as needed
+    },
+    es: {
+        greeting: "Hola",
+        farewell: "Adiós"
+        // Add more translations as needed
+    },
+    fr: {
+        greeting: "Bonjour",
+        farewell: "Au revoir"
+        // Add more translations as needed
+    }
+    // Add more languages and translations as needed
+};
+
 function translateText() {
     const sourceText = document.getElementById('sourceText').value;
     const targetLanguage = document.getElementById('targetLanguage').value;
 
-    // Replace 'YOUR_API_KEY' with your actual Google Cloud Translation API key
-    const apiKey = '82e5a2ae30msh29158d156205fb3p120b0cjsn52b5e7ab1596';
-    const url = `https://translation.googleapis.com/language/translate/v2?key=${apiKey}`;
-
-    const data = {
-        q: sourceText,
-        target: targetLanguage
-    };
-
-    fetch(url, {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: {
-            'Content-Type': 'application/json'
-        }
-    })
-    .then(response => response.json())
-    .then(data => {
-        const translatedText = data.data.translations[0].translatedText;
+    if (translations[targetLanguage]) {
+        const translatedText = translate(sourceText, targetLanguage);
         document.getElementById('translatedText').innerText = translatedText;
-    })
-    .catch(error => console.error('Error:', error));
+    } else {
+        alert("Translation for selected language not available.");
+    }
+}
+
+function translate(text, targetLanguage) {
+    const translatedTexts = translations[targetLanguage];
+    const words = text.split(" ");
+    let translatedText = "";
+
+    words.forEach(word => {
+        if (translatedTexts[word]) {
+            translatedText += translatedTexts[word] + " ";
+        } else {
+            translatedText += word + " ";
+        }
+    });
+
+    return translatedText.trim();
 }

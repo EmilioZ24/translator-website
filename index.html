@@ -4,14 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Translator</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
-    <div class="container mt-5">
-        <h1 class="text-center mb-4">Translator</h1>
+    <div class="container">
+        <h1 class="text-center">Translator</h1>
         <div class="form-group">
             <label for="sourceText">Enter text to translate:</label>
             <textarea class="form-control" id="sourceText" rows="5"></textarea>
@@ -28,12 +25,6 @@
         <button class="btn btn-primary" onclick="translateText()">Translate</button>
         <div id="translatedText" class="mt-4"></div>
     </div>
-
-    <!-- Bootstrap JS and jQuery -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <!-- Custom JS -->
-    <script src="script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
