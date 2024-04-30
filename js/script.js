@@ -1,46 +1,23 @@
-const translations = {
-    en: {
-        greeting: "Hello",
-        farewell: "Goodbye"
-        // Add more translations as needed
-    },
-    es: {
-        greeting: "Hola",
-        farewell: "Adiós"
-        // Add more translations as needed
-    },
-    fr: {
-        greeting: "Bonjour",
-        farewell: "Au revoir"
-        // Add more translations as needed
-    }
-    // Add more languages and translations as needed
-};
+// Function to translate text
+function translateText(text) {
+    // Replace YOUR_API_KEY with your actual API key
+    const apiKey = "b3aef2821ef24fab5ca9";
+    const url = `;
 
-function translateText() {
-    const sourceText = document.getElementById('sourceText').value;
-    const targetLanguage = document.getElementById('targetLanguage').value;
+    const data = {
+      q: text,
+      source: "en",
+      target: "fr"
+    };
 
-    if (translations[targetLanguage]) {
-        const translatedText = translate(sourceText, targetLanguage);
-        document.getElementById('translatedText').innerText = translatedText;
-    } else {
-        alert("Translation for selected language not available.");
-    }
-}
-
-function translate(text, targetLanguage) {
-    const translatedTexts = translations[targetLanguage];
-    const words = text.split(" ");
-    let translatedText = "";
-
-    words.forEach(word => {
-        if (translatedTexts[word]) {
-            translatedText += translatedTexts[word] + " ";
-        } else {
-            translatedText += word + " ";
-        }
+    $.post(url, data, function(response) {
+      const translatedText = response.data.translations[0].translatedText;
+      $("#translationResult").text(translatedText);
     });
+  }
 
-    return translatedText.trim();
-}
+  // Translate button click event
+  $("#translateButton").click(function() {
+    const inputText = $("#inputText").val();
+    translateText(inputText);
+  });
